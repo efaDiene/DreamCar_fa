@@ -11,6 +11,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torchvision import transforms
 from PIL import Image
+import rembg
+
 
 class BackgroundRemoval():
     def __init__(self, device='cuda'):
@@ -177,13 +179,17 @@ def preprocess_single_image(img_path, opt):
         return
     print(img_path)
     image= cv2.imread(img_path, cv2.IMREAD_UNCHANGED)
-
+    print(image.shape,image.shape[-1])
 
     if image.shape[-1] == 4:
         carved_image = cv2.cvtColor(image, cv2.COLOR_BGRA2RGBA)
         image = cv2.cvtColor(image, cv2.COLOR_BGRA2RGB)
     else:
+        #carved_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGBA)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    # carve background
+    #print(f'[INFO] background removal...')
+    carved_image = rembg.remove(image) # [H, W, 4]
     mask = carved_image[..., -1] > 0
 
     # predict depth

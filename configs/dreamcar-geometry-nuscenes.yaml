@@ -76,7 +76,7 @@ system:
   prompt_processor_type: "deep-floyd-prompt-processor"
   prompt_processor:
     pretrained_model_name_or_path: "DeepFloyd/IF-I-XL-v1.0"
-    prompt: "a DSLR photo of a vehicle"
+    prompt: "a DSLR photo of a white vehicle"
     use_perp_neg: true
 
   guidance_type: "deep-floyd-guidance"
@@ -136,7 +136,7 @@ system:
     view_lr: 1e-6
 
 trainer:
-  max_steps: 5000
+  max_steps: 2000
   log_every_n_steps: 1
   num_sanity_val_steps: 0
   val_check_interval: 200

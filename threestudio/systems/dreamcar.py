@@ -945,14 +945,15 @@ class ImageConditionDreamFusion(BaseLift3DSystem):
 
         pass
 
-    def on_load_checkpoint(self, checkpoint):
+    #Produced error (by nf)
+    """ def on_load_checkpoint(self, checkpoint):
         # raise RuntimeError
         for k in list(checkpoint['state_dict'].keys()):
             if k.startswith("guidance."):
                 return
         guidance_state_dict = {"guidance."+k : v for (k,v) in self.guidance.state_dict().items()}
         checkpoint['state_dict'] = {**checkpoint['state_dict'], **guidance_state_dict}
-        return
+        return """
 
     def on_save_checkpoint(self, checkpoint):
         for k in list(checkpoint['state_dict'].keys()):

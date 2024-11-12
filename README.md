@@ -138,10 +138,13 @@ python launch.py --train  --config configs/dreamcar-texture-nuscenes.yaml \
             data.random_camera.height=128 data.random_camera.width=128   data.height=128  data.width=128  \
         system.guidance_3d.pretrained_model_name_or_path="load/zero123/dreamcar123.ckpt"
  
+#Export Meshes
+#You can export the textured mesh obj using the following scipt: 
+python launch.py --config outputs/dreamcar-geometry/firstOne/configs/parsed.yaml --export --gpu 0 resume=outputs/dreamcar-geometry/firstOne/ckpts/last.ckpt system.exporter_type=mesh-exporter
+
  
+
 ```
-
-
 
 
 ## 👍 **Acknowledgement**

@@ -63,7 +63,7 @@ class DeepFloydPromptProcessor(PromptProcessor):
             pretrained_model_name_or_path,
             subfolder="text_encoder",
             torch_dtype=torch.float16,  # suppress warning
-            load_in_8bit=True,
+            load_in_8bit=False,
             variant="8bit",
             device_map="auto",
         )
