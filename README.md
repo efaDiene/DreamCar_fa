@@ -110,7 +110,7 @@ python preprocess_image.py  "$image_path"
 ## stage 1 NeRF
 python launch.py   --train   \
    --config configs/dreamcar-coarse-nerf-nuscenes.yaml data.image_path="$image_path"      \
-      data.random_camera.height=64 data.random_camera.width=64   data.height=64  data.width=64  \
+      data.random_camera.height=128 data.random_camera.width=128   data.height=128  data.width=128  \
    system.guidance_3d.pretrained_model_name_or_path="load/zero123/dreamcar123.ckpt"   
 
 
@@ -119,7 +119,7 @@ ckpt=outputs/dreamcar-coarse-nerf/"$id"/ckpts/last.ckpt
 python launch.py  --train  \
     --config configs/dreamcar-coarse-neus-nuscenes.yaml  \
     system.weights="$ckpt" data.image_path="$image_path"   \
-      data.random_camera.height=64 data.random_camera.width=64   data.height=64  data.width=64  \
+      data.random_camera.height=128 data.random_camera.width=128   data.height=128  data.width=128  \
       system.guidance_3d.pretrained_model_name_or_path="load/zero123/dreamcar123.ckpt"
 
 
@@ -135,7 +135,7 @@ python launch.py  --train  \
 ckpt=outputs/dreamcar-geometry/"$id"/ckpts/last.ckpt
 python launch.py --train  --config configs/dreamcar-texture-nuscenes.yaml \
       data.image_path="$image_path" system.geometry_convert_from="$ckpt" \
-            data.random_camera.height=128 data.random_camera.width=128   data.height=128  data.width=128  \
+            data.random_camera.height=1024 data.random_camera.width=1024   data.height=1024  data.width=1024  \
         system.guidance_3d.pretrained_model_name_or_path="load/zero123/dreamcar123.ckpt"
  
 #Export Meshes

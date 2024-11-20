@@ -36,3 +36,10 @@ taming-transformers-rom1504
 
 #controlnet
 controlnet_aux
+
+#for threestudio by nf
+git+https://github.com/KAIR-BAIR/nerfacc.git@v0.5.2
+git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
+git+https://github.com/NVlabs/nvdiffrast.git
+git+https://github.com/ashawkey/envlight.git
+git+https://github.com/openai/CLIP.git
