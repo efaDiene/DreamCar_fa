@@ -189,8 +189,12 @@ def preprocess_single_image(img_path, opt):
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     # carve background
     #print(f'[INFO] background removal...')
-    carved_image = rembg.remove(image) # [H, W, 4]
+    box = np.array([[553,777], [249,779], [553,659], [248,784]])
+    input_labels = np.array([0, 0, 0, 1])
+    point=[1700, 658, 926, 922]
+    carved_image = rembg.remove(image)
     mask = carved_image[..., -1] > 0
+
 
     # predict depth
     print(f'[INFO] depth estimation...')
